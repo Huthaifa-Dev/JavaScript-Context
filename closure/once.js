@@ -1,17 +1,15 @@
-function outer(func) {
+function once(func) {
     let called;
     return function (...args) {
-        if (called) {
-            return 'You runned me before';
+        if (!called) {
+            called = func(...args)
         }
-        called = true;
-        return func(...args)
+        return called;
     }
 }
 function temp(value) {
     //some code here...
 }
-
-const runMeOnce = outer(temp);
-runMeOnce('some value'); // executed without any problem
-runMeOnce('some value'); // oops! returned 'You runned me before'!
+const runMeOnce = once(temp);
+runMeOnce('some value'); // executed
+runMeOnce('some value'); // returned same value!
