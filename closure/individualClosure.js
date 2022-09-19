@@ -6,9 +6,7 @@ function outer() {
     }
     return incrementCounter;
 }
-const increment = outer();
-let count1 = increment();
-let count2 = increment();
-let count3 = increment();
-
-console.log(count1, count2, count3);
+const counter1 = outer();// counter = 0
+let count1 = counter1(); // counter = 1 
+const counter2 = outer();// counter = 0
+let count2 = counter2(); // counter = 1
